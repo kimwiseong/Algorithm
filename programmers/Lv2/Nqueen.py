@@ -10,3 +10,5 @@ def solution(n):
             col[i] = DL[x+i] = DR[x-i+n] = False
         return ans
     return dfs(0)
+
+print(solution(4))

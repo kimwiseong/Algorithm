@@ -1,6 +1,5 @@
 def solution(record):
-    answer = []
-    user = {}
+    answer, user = [], {}
     
     for r in record:
         i = r.split()

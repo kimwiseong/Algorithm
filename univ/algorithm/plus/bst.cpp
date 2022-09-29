@@ -5,17 +5,15 @@ using namespace std;
 
 template <typename T>
 class Stack {
-private:
+    private:
     struct node {
         T key;
         node *next;
         node(T const& key, node* next) : key(key), next(next) {}
     };
     struct node *head, *z;
-public:
-    Stack() {
-        head = NULL;
-    };
+    public:
+    Stack() { head = NULL; };
     
     ~Stack() {
         node* tmp;
@@ -25,9 +23,7 @@ public:
         }
     };
 
-    void push(T const& v) {
-        head = new node(v, head);
-    };
+    void push(T const& v) { head = new node(v, head); };
     
     T pop() {
         if (empty()) return NULL;
@@ -43,14 +39,12 @@ public:
         return head->key;
     }
     
-    int empty() {
-        return head == NULL;
-    };
+    bool empty() { return head == NULL; };
 };
 
 template <typename itemType>
 class Set {
-private:
+    private:
     struct bst {
         itemType data;
         struct bst *left, *right; 
@@ -65,7 +59,6 @@ private:
 
 		if (data < node->data) 
             node->left = insertBst(node->left, data);
-
 		else if (data > node->data) 
             node->right = insertBst(node->right, data);
 
@@ -86,9 +79,8 @@ private:
 
     bool empty(bst* node) { return !node; }
 
-public:
+    public:
 	Set() { root = NULL; }
-    Set(const Set& s) { root = s.root; } //복사 생성자
     ~Set() { delete root; }
 
 	void insert(int data) {
@@ -119,7 +111,6 @@ public:
 			if (tmp->right) stack.push(tmp->right);
 			if (tmp->left) stack.push(tmp->left);
 		}
-
 		u.printSet();
 	}
 

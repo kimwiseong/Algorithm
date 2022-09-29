@@ -96,20 +96,20 @@ class Set {
 	Stack<bst*> stack;
 	stack.push(root);
 	while (!stack.empty()) {
-		tmp = stack.pop();
+	    tmp = stack.pop();
 
-		u.insert(tmp->data);
-		if (tmp->right) stack.push(tmp->right);
-		if (tmp->left) stack.push(tmp->left);
+	    u.insert(tmp->data);
+	    if (tmp->right) stack.push(tmp->right);
+	    if (tmp->left) stack.push(tmp->left);
 	}
 
 	stack.push(s.root);
 	while (!stack.empty()) {
-		tmp = stack.pop();
+	    tmp = stack.pop();
 
-		u.insert(tmp->data);
-		if (tmp->right) stack.push(tmp->right);
-		if (tmp->left) stack.push(tmp->left);
+    	    u.insert(tmp->data);
+	    if (tmp->right) stack.push(tmp->right);
+	    if (tmp->left) stack.push(tmp->left);
 	}
 	u.printSet();
     }

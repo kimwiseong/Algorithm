@@ -87,7 +87,7 @@ private:
     bool empty(bst* node) { return !node; }
 
 public:
-	Set() { root = NULL; }
+    Set() { root = NULL; }
     Set(const Set& s) { root = s.root; } //복사 생성자
     ~Set() { delete root; }
 

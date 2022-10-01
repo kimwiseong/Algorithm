@@ -51,88 +51,88 @@ class Set {
         bst(itemType const& data) : data(data), left(NULL), right(NULL){}
         ~bst() { left = NULL; right = NULL; }
     };
-	struct bst *root, *tmp;
+    struct bst *root, *tmp;
 
     bst* insertBst(bst* node, itemType data) {
-		if (empty(node)) 
+	if (empty(node)) 
             return new bst(data);
 
-		if (data < node->data) 
-            node->left = insertBst(node->left, data);
-		else if (data > node->data) 
+	if (data < node->data) 
+	    node->left = insertBst(node->left, data);
+	else if (data > node->data) 
             node->right = insertBst(node->right, data);
 
-		return node;
-	}
+	return node;
+    }
 
     void inorder(bst* node) {
-		if (empty(node)) return;
-		inorder(node->left);
-		cout << node->data << " ";
-		inorder(node->right);
-	}
+	if (empty(node)) return;
+	inorder(node->left);
+	cout << node->data << " ";
+	inorder(node->right);
+    }
 
     bool containsBst(bst* node, itemType data) {
-		if (empty(node))  return false;
-		return node->data == data || containsBst(node->left, data) || containsBst(node->right, data);
-	}
+	if (empty(node))  return false;
+	return node->data == data || containsBst(node->left, data) || containsBst(node->right, data);
+    }
 
     bool empty(bst* node) { return !node; }
 
     public:
-	Set() { root = NULL; }
+    Set() { root = NULL; }
     ~Set() { delete root; }
 
-	void insert(int data) {
-		if (!containsBst(root, data)) 
+    void insert(int data) {
+	if (!containsBst(root, data)) 
             root = insertBst(root, data);
-	}
+    }
 
     void printUnion(Set& s) {
-		Set<int> u;
-		if (root == NULL) return s.printSet();
-		if (s.root == NULL) return printSet();
+	Set<int> u;
+	if (root == NULL) return s.printSet();
+	if (s.root == NULL) return printSet();
 
-		Stack<bst*> stack;
-		stack.push(root);
-		while (!stack.empty()) {
-			tmp = stack.pop();
+	Stack<bst*> stack;
+	stack.push(root);
+	while (!stack.empty()) {
+	    tmp = stack.pop();
 
-			u.insert(tmp->data);
-			if (tmp->right) stack.push(tmp->right);
-			if (tmp->left) stack.push(tmp->left);
-		}
-
-		stack.push(s.root);
-		while (!stack.empty()) {
-			tmp = stack.pop();
-
-			u.insert(tmp->data);
-			if (tmp->right) stack.push(tmp->right);
-			if (tmp->left) stack.push(tmp->left);
-		}
-		u.printSet();
+	    u.insert(tmp->data);
+	    if (tmp->right) stack.push(tmp->right);
+	    if (tmp->left) stack.push(tmp->left);
 	}
+
+	stack.push(s.root);
+	while (!stack.empty()) {
+	    tmp = stack.pop();
+
+    	    u.insert(tmp->data);
+	    if (tmp->right) stack.push(tmp->right);
+	    if (tmp->left) stack.push(tmp->left);
+	}
+	u.printSet();
+    }
 
     void printIntersection(Set& s) {
-		Set<int> x;
-		Stack<bst*> stack;
-		stack.push(root); 
+	Set<int> x;
+	Stack<bst*> stack;
+	stack.push(root); 
 
-		while (!stack.empty()) {
+	while (!stack.empty()) {
             tmp = stack.pop();
 
-			if (s.contains(tmp->data)) x.insert(tmp->data);
-			if (tmp->right) stack.push(tmp->right);
-			if (tmp->left) stack.push(tmp->left);
-		}
+   	    if (s.contains(tmp->data)) x.insert(tmp->data);
+	    if (tmp->right) stack.push(tmp->right);
+    	    if (tmp->left) stack.push(tmp->left);
+	}
         x.printSet();
-	}
+    }
 
-	void printSet() {
-		inorder(root);
+    void printSet() {
+	inorder(root);
         cout << "\n";
-	}
+    }
 
     bool contains(int data) { return containsBst(root, data); }
 

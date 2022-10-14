@@ -7,7 +7,6 @@ void merge(int *list, int left, int mid, int right, int size) {
     int *tmp = new int[size]; 
 
     while (i<=mid && j<=right) {
-
         if (list[i] < list[j]) tmp[k++] = list[i++];
         else  tmp[k++] = list[j++];
     }

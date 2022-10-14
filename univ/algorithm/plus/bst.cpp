@@ -5,14 +5,14 @@ using namespace std;
 
 template <typename T>
 class Stack {
-    private:
+private:
     struct node {
         T key;
         node *next;
         node(T const& key, node* next) : key(key), next(next) {}
     };
     struct node *head, *z;
-    public:
+public:
     Stack() { head = NULL; };
     
     ~Stack() {

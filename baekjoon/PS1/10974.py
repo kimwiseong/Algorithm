@@ -1,4 +1,5 @@
 # 10973 - 이전 순열
+
 from itertools import permutations
 
 n = int(input())
